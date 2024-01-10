@@ -1,0 +1,25 @@
+def solution(a, k):
+    left, right = 1, max(a)
+
+    while left < right:
+        mid = (left + right + 1) // 2
+
+        ribbons_count = sum(length // mid for length in a)
+
+        if ribbons_count < k:
+            right = mid - 1
+        else:
+            left = mid
+
+    return left
+
+# Example usage:
+a1 = [5, 2, 7, 4, 9]
+k1 = 5
+result1 = solution(a1, k1)
+print("Maximum length of obtained ribbons:", result1)
+
+a2 = [1, 2, 3, 4, 9]
+k2 = 6
+result2 = solution(a2, k2)
+print("Maximum length of obtained ribbons:", result2)
